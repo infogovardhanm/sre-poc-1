@@ -1,0 +1,24 @@
+from python:latest
+
+WORKDIR /app
+
+##copy create directories and copy the files
+
+#RUN mkdir -p Flsa_curd_app
+COPY app.py /
+RUN mkdir -p /templates
+COPY templates /templates
+RUN mkdir -p /static
+COPY static /static
+COPY requirements.txt .
+
+## install required packages
+RUN pip install -r requirements.txt
+#RUN apt install Flask
+#RUN
+
+EXPOSE 5000
+
+#ENTRYPOINT  ["python3"]
+
+CMD ["python", "/app.py"]
